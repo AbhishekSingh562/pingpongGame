@@ -186,3 +186,15 @@ function getMousePos(evt) {
 }
 
 can.addEventListener("mousemove", getMousePos);
+
+function onTouchMove(event) {
+  event.preventDefault(); // Prevent default touch behavior
+
+  let touch = event.touches[0]; // Get the first touch
+
+  let rect = can.getBoundingClientRect();
+  user.y = touch.clientY - rect.top - user.height / 2;
+}
+
+// Add a touch event listener to the canvas
+can.addEventListener("touchmove", onTouchMove);
